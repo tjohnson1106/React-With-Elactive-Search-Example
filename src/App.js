@@ -19,11 +19,14 @@ class App extends Component {
             primaryColor: "#FF3A4E"
           }}
         >
+          <nav className="nav">
+            <div className="title">Search Page</div>
+          </nav>
           <DateRange
             dataField="date_from"
             componentId="DateRangeSensor"
             title="When"
-            numberOfMonths={1}
+            numberOfMonths={2}
             queryFormat="basic_date" // yyyyMMdd
           />
           <NumberBox
@@ -31,6 +34,7 @@ class App extends Component {
             dataField="accomodates"
             title="Guests"
             defaultSelected={2}
+            labelPosition="right"
             data={{
               start: 1,
               end: 16
@@ -53,15 +57,17 @@ class App extends Component {
               end: 50
             }}
             stepValue={10}
+            interval={20}
             react={{
               and: ["DateRangeSensor"]
             }}
           />
           <ResultCard
+            className="right-col"
             componentId="SearchResult"
             dataField="name"
             from={0}
-            size={10}
+            size={12}
             onData={data => ({
               image: data.image,
               title: data.name,
